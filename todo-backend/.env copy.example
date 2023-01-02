@@ -1,0 +1,8 @@
+# APP ENVIRONMENT VARIABLES
+APP_NAME = Todo-list
+APP_PORT = 3000
+APP_BASE_URL = 
+APP_API_PREFIX = 
+
+# DB ENVIRONMENT VARIABLES
+MONGO_URI = 'mongodb+srv://admin:1234@cluster0.4ug9xtj.mongodb.net/?retryWrites=true&w=majority'
