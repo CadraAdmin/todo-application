@@ -16,7 +16,11 @@ const EditTodoForm = () => {
       navigate("/");
     } else {
       axios
-        .get(process.env.REACT_APP_API_BASE_URL + "/api/v1/todo/" + searchParams.get("id"))
+        .get(
+          process.env.REACT_APP_API_BASE_URL +
+            "/api/v1/todo/" +
+            searchParams.get("id")
+        )
         .then((res) => {
           setTodoTitle(res.data.todo.title);
           setTodoDescription(res.data.todo.description);
@@ -41,11 +45,16 @@ const EditTodoForm = () => {
     // if validation is ok, then add new todo
     if (todoTitle && todoDescription) {
       axios
-        .put(process.env.REACT_APP_API_BASE_URL + "/api/v1/todo/" + searchParams.get("id"), {
-          title: todoTitle,
-          description: todoDescription,
-          completed: todoCompleted,
-        })
+        .put(
+          process.env.REACT_APP_API_BASE_URL +
+            "/api/v1/todo/" +
+            searchParams.get("id"),
+          {
+            title: todoTitle,
+            description: todoDescription,
+            completed: todoCompleted,
+          }
+        )
         .then((res) => {
           if (res.status === 200) {
             setSuccessMessage("Todo updated successfully");
@@ -91,12 +100,26 @@ const EditTodoForm = () => {
         className="flex flex-col items-center justify-center"
         onSubmit={(e) => {
           handleSubmit(e);
-        }}>
+        }}
+      >
         {/* TODOS TITLE INPUT FIELD */}
-        <input type="text" className="w-full border-2 border-gray-500 px-5 py-2 rounded-sm my-2" placeholder="Add here todo title" value={todoTitle} onChange={(e) => setTodoTitle(e.target.value)} />
+        <input
+          type="text"
+          className="w-full border-2 border-gray-500 px-5 py-2 rounded-sm my-2"
+          placeholder="Add here todo title"
+          value={todoTitle}
+          onChange={(e) => setTodoTitle(e.target.value)}
+        />
 
         {/* TODOS DESCRIPTION INPUT FIELD */}
-        <textarea className="w-full border-2 border-gray-500 px-5 py-2 rounded-sm" cols="30" rows="3" placeholder="Add here todo description" value={todoDescription} onChange={(e) => setTodoDescription(e.target.value)} />
+        <textarea
+          className="w-full border-2 border-gray-500 px-5 py-2 rounded-sm"
+          cols="30"
+          rows="3"
+          placeholder="Add here todo description"
+          value={todoDescription}
+          onChange={(e) => setTodoDescription(e.target.value)}
+        />
 
         {/* TODOS COMPLETED CHECKBOX INPUT FIELD */}
         <div className="w-full flex flex-row items-center justify-start my-4">
@@ -116,11 +139,17 @@ const EditTodoForm = () => {
 
         {/* TODOS UPDATE & BACK HOMEPAGE BUTTON */}
         <div className="w-full flex flex-row items-center justify-center">
-          <button type="submit" className="bg-green-500 text-white rounded-sm shadow-md w-full my-2 py-2 mr-2 transition-all duration-100 hover:bg-green-600">
+          <button
+            type="submit"
+            className="bg-green-500 text-white rounded-sm shadow-md w-full my-2 py-2 mr-2 transition-all duration-100 hover:bg-green-600"
+          >
             Update Todo
           </button>
 
-          <Link to="/" className="bg-blue-500 text-white text-center rounded-sm shadow-md w-full my-2 py-2 ml-2 transition-all duration-100 hover:bg-blue-600">
+          <Link
+            to="/"
+            className="bg-blue-500 text-white text-center rounded-sm shadow-md w-full my-2 py-2 ml-2 transition-all duration-100 hover:bg-blue-600"
+          >
             Go Back Homepage
           </Link>
         </div>
